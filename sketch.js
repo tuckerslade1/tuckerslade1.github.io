@@ -14,13 +14,13 @@ function draw() {
   colorMode(HSB);
   rectMode(CENTER);
   strokeWeight(2);
-  fill(255);
   let xCount = 0;
   for (let posX = 3 * -width/2; posX <= 3 * width/2; posX += squareSpacing) {
     let yCount = 0;
     xCount++;
     for (let posY = 3 * -height/2; posY <= 3 * height/2; posY += squareSpacing) {
       stroke((xCount * yCount) % 360, 100, 100);
+      fill((xCount * yCount) % 360, 100, 100)
       square(posX, posY, squareWidth);
       yCount++;
     }
