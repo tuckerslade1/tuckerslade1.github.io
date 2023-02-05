@@ -1,3 +1,10 @@
+/* color palette:
+-background: #1b0b19
+-main text color: #c7efcf
+-main text shadow color: #94b39a
+-alt text color: #ff4b42
+*/
+
 @font-face {
     font-family: 'proggyvectorregular';
     src: url('proggy vector/proggyvector_regular-webfont.woff2') format('woff2'),
@@ -6,13 +13,69 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'dinaremasterregular';
+    src: url('dina regular/dinaremaster-regular-01-webfont.woff2') format('woff2'),
+         url('dina regular/dinaremaster-regular-01-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    padding: 0;
-    margin: 0;
-    background-color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+    background-color: #141414;
     font-family: 'proggyvectorregular', Helvetica, sans-serif;
 }
 
 canvas {
     margin: auto;
+}
+
+.neon-paragraph {
+    color: #ff4b42;
+    text-shadow: 0 0 7px #94b39a;
+    font-size: 14px
+}
+
+.neon-header {
+    font-family: 'dinaremasterregular';
+    background: -webkit-linear-gradient(#fff, #eee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neon-header 2s infinite;
+    font-size: 28px
+}
+
+.neon-footer {
+    font-family: 'dinaremasterregular';
+    background: -webkit-linear-gradient(#fff, #eee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neon-footer 2s infinite;
+    font-size: 22px
+}
+
+@keyframes neon-header {
+    0% {
+        text-shadow: 0 0 3px #ff4b42, 0 0 10px #ff4b42, 0 0 20px #ff4b42;
+    }
+    50% {
+        text-shadow: 0 0 2px #ff4b42, 0 0 7px #ff4b42, 0 0 14px #ff4b42;
+    }
+    100% {
+        text-shadow: 0 0 3px #ff4b42, 0 0 10px #ff4b42, 0 0 20px #ff4b42;
+    }
+}
+
+@keyframes neon-footer {
+    0% {
+        text-shadow: 0 0 3px #c7efcf, 0 0 10px #c7efcf, 0 0 20px #c7efcf;
+    }
+    50% {
+        text-shadow: 0 0 2px #c7efcf, 0 0 7px #c7efcf, 0 0 14px #c7efcf;
+    }
+    100% {
+        text-shadow: 0 0 3px #c7efcf, 0 0 10px #c7efcf, 0 0 20px #c7efcf;
+    }
 }
