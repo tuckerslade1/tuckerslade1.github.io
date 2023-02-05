@@ -1,6 +1,7 @@
 function setup() {
     createCanvas(windowWidth-20, windowHeight-126);
     frameRate(60);
+    //background(20, 20, 20, 255);
   }
    
 let squareSpacing = 100
@@ -13,7 +14,7 @@ function draw() {
   push();
   colorMode(HSB);
   rectMode(CENTER);
-  stroke(frameCount/2, 100, 100);
+  stroke((frameCount/2) % 360, 100, 100);
   strokeWeight(2);
   fill(255);
   for (let posX = 3 * -width/2; posX <= 3 * width/2; posX += squareSpacing) {
