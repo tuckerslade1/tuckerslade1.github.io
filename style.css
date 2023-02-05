@@ -1,8 +1,17 @@
+@font-face {
+    font-family: 'proggyvectorregular';
+    src: url('proggy vector/proggyvector_regular-webfont.woff2') format('woff2'),
+         url('proggy vector/proggyvector_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     padding: 0;
     margin: 0;
     background-color: #ffffff;
-  }
+    font-family: 'proggyvectorregular', Helvetica, sans-serif;
+}
 
 canvas {
     margin: auto;
