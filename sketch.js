@@ -1,5 +1,5 @@
 function setup() {
-    createCanvas(windowWidth-20, windowHeight-126, WEBGL); // makes the canvas (between header and footer)
+    createCanvas(windowWidth-4, windowHeight-126, WEBGL); // makes the canvas (between header and footer)
     frameRate(60);
   }
    
@@ -20,7 +20,8 @@ function draw() {
     let column = 0;
     push(); // used to reset the row position after generating each row
     for (let posY = 3 * -height/2; posY <= 3 * height/2; posY += squareSpacing) {
-      let hue = (row * column) % 360 // color of square determined by its row and column
+      //let hue = ((row + column) * 40) % 360 // color of square determined by its row and column
+      let hue = map(row, 0, windowWidth/squareSpacing + 1, 0, 360)
       stroke(0); // changes color of square outline
       fill(hue, 100, 100) // changes fill color of squares
       box(squareWidth); // makes a square
