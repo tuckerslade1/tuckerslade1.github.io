@@ -1,7 +1,7 @@
 const xMargin = 15;
 const yMargin = 20;
-const xSpacing = 10;
-const ySpacing = 10;
+const xSpacing = 5;
+const ySpacing = 5;
 const variability = 0.1 // range [0,1], lower value = less variable
 const circleSize = 1 // size of circles
 let dotArray = [];
@@ -27,16 +27,15 @@ function setup() {
 
 function draw() {
     background(0,0,8,1);
-    rotate(QUARTER_PI)
     for (let x=0; x<dotArray.length; x++) {
         xPos = dotArray[x][0][0];
         for (let y=0; y<dotArray[0].length; y++) {
             yPos = dotArray[x][y][1];
-            brightness = map(noise(xPos/400,yPos/400,t+15),0,1,-24,118)
+            brightness = map(noise(xPos/30,yPos/30,t+15),0,1,0,100)// mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
             push();
-            stroke(0,0,brightness) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            stroke(0,0,brightness) 
             strokeWeight(2);
-            fill(0,0,brightness) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            fill(0,0,brightness)
             square(xPos+xMargin,yPos+yMargin,circleSize)
             pop();
         }
