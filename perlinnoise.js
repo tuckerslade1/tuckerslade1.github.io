@@ -3,11 +3,12 @@ const yMargin = 20;
 const xSpacing = 10;
 const ySpacing = 10;
 const variability = 0.1 // range [0,1], lower value = less variable
-const circleSize = 2 // size of circles
+const circleSize = 1 // size of circles
 let dotArray = [];
 let pointCoords;
 let xPos;
 let yPos;
+let brightness;
 let t = 0;
 
 function setup() {
@@ -23,19 +24,15 @@ function setup() {
 
 function draw() {
     colorMode(HSB);
-    background(0,0,8, 0.5);
+    background(0,0,8,1);
     for (let x=0; x<dotArray.length; x++) {
-        //xPos = x*xSpacing;
-        //xPos = map(noise(xPos,frameCount),0,1,xPos-variability, xPos+variability);
         xPos = dotArray[x][0][0];
         for (let y=0; y<dotArray[0].length; y++) {
-            //yPos = dotArray[x][y][1];
-            //yPos = map(noise(yPos,frameCount),0,1,yPos-variability,yPos+variability);
             yPos = dotArray[x][y][1];
             push();
-            stroke(map(noise(xPos/300,yPos/300,t+15),0,1,263,283),map(noise(xPos/300,yPos/300,t+15),0,1,0,100),80);
+            stroke(0,0,map(noise(xPos/300,yPos/300,t+15),0,1,-30,130)) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
             strokeWeight(2);
-            fill(map(noise(xPos/300,yPos/300,t+15),0,1,263,283),map(noise(xPos/300,yPos/300,t+15),0,1,0,100),60)
+            fill(0,0,map(noise(xPos/300,yPos/300,t+15),0,1,-30,130)) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
             circle(xPos+xMargin,yPos+xMargin,circleSize)
             pop();
         }
