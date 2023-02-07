@@ -24,6 +24,7 @@
 body {
     padding: 0px;
     margin: auto;
+    overflow: hidden;
     background-color: #141414;
     font-family: 'proggyvectorregular', Helvetica, sans-serif;
 }

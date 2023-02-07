@@ -1,25 +1,27 @@
-const xMargin = 15;
-const yMargin = 20;
-const xSpacing = 5;
-const ySpacing = 5;
+const xMargin = 0; // margin from edge of screen
+const yMargin = 0;
+const xSpacing = 12; // space between each point
+const ySpacing = 12;
+const xWidth = 1920; // size of design
+const yWidth = 1080;
 const variability = 0.1 // range [0,1], lower value = less variable
-const circleSize = 1 // size of circles
+const pointSize = 1 // size of points
 let dotArray = [];
 let pointCoords;
 let xPos;
 let yPos;
-let brightness;
+let transparency;
 let t = 0;
 
 function setup() {
-    createCanvas(windowWidth-12, windowHeight-12); // makes the canvas (between header and footer)
+    createCanvas(windowWidth, windowHeight); // makes the canvas (between header and footer)
     colorMode(HSB);
     rectMode(CENTER);
 
     // making array 1.2x larger than screen so screen will always be full
-    for (let x=0; x<=1.2*(width-(2*xMargin)); x+=xSpacing) { // creating an array with coordinates of every point in dot field
+    for (let x=-xWidth/2; x<=xWidth/2; x+=xSpacing) { // creating an array with coordinates of every point in dot field
         dotArray.push([]); // add empty array for each column of dots
-        for (let y=0; y<=1.2*(height-(2*yMargin)); y+=ySpacing) { // making array 1.2x larger than screen so screen will always be full
+        for (let y=-yWidth/2; y<=yWidth/2; y+=ySpacing) { // making array 1.2x larger than screen so screen will always be full
             dotArray[dotArray.length-1].push([x,y]); // add coordinates of each point to the last item in dotArray
         }
     }
@@ -27,16 +29,17 @@ function setup() {
 
 function draw() {
     background(0,0,8,1);
-    for (let x=0; x<dotArray.length; x++) {
+    translate(width/2, height/2);
+    for (let x=0; x<dotArray.length; x++) { // iterating over x-values of points in dotArray
         xPos = dotArray[x][0][0];
-        for (let y=0; y<dotArray[0].length; y++) {
+        for (let y=0; y<dotArray[0].length; y++) { // iterating over y-values of points in dotArray
             yPos = dotArray[x][y][1];
-            brightness = map(noise(xPos/30,yPos/30,t+15),0,1,0,100)// mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            transparency = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,-0.3,1) // can map to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
             push();
-            stroke(0,0,brightness) 
-            strokeWeight(2);
-            fill(0,0,brightness)
-            square(xPos+xMargin,yPos+yMargin,circleSize)
+            stroke(0,0,255,transparency);
+            strokeWeight(pointSize);
+            fill(0,0,255,transparency);
+            point(xPos+xMargin,yPos+yMargin);
             pop();
         }
     }
