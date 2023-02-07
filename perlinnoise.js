@@ -11,6 +11,11 @@ let pointCoords;
 let xPos;
 let yPos;
 let transparency;
+const minTransparency = -0.3;
+const maxTransparency = 1.2;
+let saturation;
+const minSaturation = 0;
+const maxSaturation = 110;
 let t = 0;
 
 function setup() {
@@ -34,16 +39,16 @@ function draw() {
         xPos = dotArray[x][0][0];
         for (let y=0; y<dotArray[0].length; y++) { // iterating over y-values of points in dotArray
             yPos = dotArray[x][y][1];
-            transparency = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,-0.3,1) // can map to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            transparency = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,minTransparency,maxTransparency) // can map to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            saturation = map(transparency,minTransparency,maxTransparency,minSaturation,maxSaturation);
             push();
-            stroke(0,0,255,transparency);
+            stroke(0,saturation,255,transparency);
             strokeWeight(pointSize);
-            fill(0,0,255,transparency);
             point(xPos+xMargin,yPos+yMargin);
             pop();
         }
     }
-    t+=0.01
+    t+=0.03
 }
 
 function windowResized(){
