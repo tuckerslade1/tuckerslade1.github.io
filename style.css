@@ -24,7 +24,11 @@
 body {
     padding: 0px;
     margin: auto;
+<<<<<<< Updated upstream
     background-color: #141414;
+=======
+    background-color: #1b0b19;
+>>>>>>> Stashed changes
     font-family: 'proggyvectorregular', Helvetica, sans-serif;
 }
 

@@ -3,7 +3,11 @@ const yMargin = 20;
 const xSpacing = 10;
 const ySpacing = 10;
 const variability = 0.1 // range [0,1], lower value = less variable
+<<<<<<< Updated upstream
 const circleSize = 2 // size of circles
+=======
+const circleSize = 30 // size of circles or dots
+>>>>>>> Stashed changes
 let dotArray = [];
 let pointCoords;
 let xPos;
@@ -33,10 +37,16 @@ function draw() {
             //yPos = map(noise(yPos,frameCount),0,1,yPos-variability,yPos+variability);
             yPos = dotArray[x][y][1];
             push();
+<<<<<<< Updated upstream
             stroke(map(noise(xPos/300,yPos/300,t+15),0,1,263,283),map(noise(xPos/300,yPos/300,t+15),0,1,0,100),80);
             strokeWeight(2);
             fill(map(noise(xPos/300,yPos/300,t+15),0,1,263,283),map(noise(xPos/300,yPos/300,t+15),0,1,0,100),60)
             circle(xPos+xMargin,yPos+xMargin,circleSize)
+=======
+            stroke(0,2,6);
+            strokeWeight(2);
+            circle(xPos,yPos,size)
+>>>>>>> Stashed changes
             pop();
         }
     }
