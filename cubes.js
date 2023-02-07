@@ -20,9 +20,9 @@ function draw() {
       let x = posX - width/2
       let y = posY - height/2
       let angle = atan2((mouseY - height/2) - y, (mouseX - width/2) - x)
-      rotateX(angle)
-      rotateY(angle)
-      rotateZ(angle)
+      //rotateX(angle)
+      //rotateY(angle)
+      //rotateZ(angle)
 
       let hue = map(row, 0, windowWidth/squareSpacing + 1, 0, 360) // color of cube determined by its column
       stroke(0); // changes color of square outline
