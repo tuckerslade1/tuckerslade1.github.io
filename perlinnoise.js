@@ -21,17 +21,6 @@ function setup() {
     }
 }
 
-/*
-// debugging dotArray
-for (i=0;i<dotArray.length;i++) {
-    for (j=0; j<dotArray[i].length;j++) {
-        for (k=0; k<dotArray[i][j].length;k++) {
-            console.log(dotArray[i][j][k].toString());
-        }
-    }
-}
-*/
-
 function draw() {
     colorMode(HSB);
     background(0,0,8, 0.5);
