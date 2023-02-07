@@ -13,6 +13,9 @@ let t = 0;
 
 function setup() {
     createCanvas(windowWidth-12, windowHeight-12); // makes the canvas (between header and footer)
+    colorMode(HSB);
+    rectMode(CENTER);
+
     // making array 1.2x larger than screen so screen will always be full
     for (let x=0; x<=1.2*(width-(2*xMargin)); x+=xSpacing) { // creating an array with coordinates of every point in dot field
         dotArray.push([]); // add empty array for each column of dots
@@ -23,23 +26,24 @@ function setup() {
 }
 
 function draw() {
-    colorMode(HSB);
     background(0,0,8,1);
+    rotate(QUARTER_PI)
     for (let x=0; x<dotArray.length; x++) {
         xPos = dotArray[x][0][0];
         for (let y=0; y<dotArray[0].length; y++) {
             yPos = dotArray[x][y][1];
+            brightness = map(noise(xPos/400,yPos/400,t+15),0,1,-24,118)
             push();
-            stroke(0,0,map(noise(xPos/300,yPos/300,t+15),0,1,-30,130)) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            stroke(0,0,brightness) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
             strokeWeight(2);
-            fill(0,0,map(noise(xPos/300,yPos/300,t+15),0,1,-30,130)) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
-            circle(xPos+xMargin,yPos+xMargin,circleSize)
+            fill(0,0,brightness) // mapping to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            square(xPos+xMargin,yPos+yMargin,circleSize)
             pop();
         }
     }
-    t+=0.05
+    t+=0.01
 }
 
 function windowResized(){
     resizeCanvas(windowWidth-12, windowHeight-12);
-  }
+}
