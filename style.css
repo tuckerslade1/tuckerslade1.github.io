@@ -22,10 +22,14 @@
 }
 
 body {
+    height:100%;
     padding: 0px;
     margin: auto;
     overflow: hidden;
-    background-color: #141414;
+    background: rgb(247,226,233);
+    background-image: linear-gradient(to bottom, rgb(247,226,233), rgb(209, 250, 241));
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     font-family: 'proggyvectorregular', Helvetica, sans-serif;
 }
 

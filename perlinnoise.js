@@ -34,7 +34,6 @@ function setup() {
 }
 
 function draw() {
-    background(0,0,8,1);
     translate(width/2, height/2);
     for (let x=0; x<dotArray.length; x++) { // iterating over x-values of points in dotArray
         xPos = dotArray[x][0][0];
@@ -44,7 +43,7 @@ function draw() {
             saturation = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,minSaturation,maxSaturation);
             brightness = map(saturation,minSaturation,maxSaturation,minBrightness,maxBrightness);
             push();
-            stroke(0,saturation,brightness,1);
+            stroke(0,saturation,brightness,0);
             strokeWeight(squareSize);
             square(xPos+xMargin,yPos+yMargin,squareSize);
             pop();
