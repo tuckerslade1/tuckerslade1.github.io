@@ -12,7 +12,7 @@ let transparency;
 const minTransparency = -0.05;
 const maxTransparency = 1.0;
 let saturation;
-const minSaturation = -20;
+const minSaturation = -10;
 const maxSaturation = 100;
 let brightness;
 const minBrightness = 100;
