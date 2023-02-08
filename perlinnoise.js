@@ -1,6 +1,6 @@
 const xMargin = 0; // margin from edge of screen
 const yMargin = 0;
-const squareSize = 10; // size of each square
+const squareSize = 32; // size of each square
 const xWidth = 1920; // size of design
 const yWidth = 1080;
 const variability = 0.1 // range [0,1], lower value = less variable
@@ -12,11 +12,12 @@ let transparency;
 const minTransparency = -0.05;
 const maxTransparency = 1.0;
 let saturation;
-const minSaturation = 0;
-const maxSaturation = 110;
+const minSaturation = -20;
+const maxSaturation = 100;
 let brightness;
-const minBrightness = 0;
-const maxBrightness = 50;
+const minBrightness = 100;
+const maxBrightness = 100;
+let hue;
 let t = 0;
 
 function setup() {
@@ -40,11 +41,13 @@ function draw() {
         for (let y=0; y<dotArray[0].length; y++) { // iterating over y-values of points in dotArray
             yPos = dotArray[x][y][1];
             //transparency = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,minTransparency,maxTransparency) // can map to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            hue = 300
             saturation = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,minSaturation,maxSaturation);
             brightness = map(saturation,minSaturation,maxSaturation,minBrightness,maxBrightness);
             push();
-            stroke(0,saturation,brightness,0);
-            strokeWeight(squareSize);
+            stroke(0,0,100,0.6);
+            strokeWeight(3);
+            fill(hue,saturation,brightness,1);
             square(xPos+xMargin,yPos+yMargin,squareSize);
             pop();
         }
