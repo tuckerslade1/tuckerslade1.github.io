@@ -1,8 +1,6 @@
 const xMargin = 0; // margin from edge of screen
 const yMargin = 0;
-const squareSize = 10; // size of each square
-const xWidth = 1920; // size of design
-const yWidth = 1080;
+const squareSize = 72; // size of each square
 const variability = 0.1 // range [0,1], lower value = less variable
 let dotArray = [];
 let pointCoords;
@@ -18,16 +16,16 @@ let brightness;
 const minBrightness = 0;
 const maxBrightness = 50;
 let t = 0;
+let squareColor;
 
 function setup() {
     createCanvas(windowWidth, windowHeight); // makes the canvas (between header and footer)
-    colorMode(HSB);
     rectMode(CENTER);
 
-    // making array 1.2x larger than screen so screen will always be full
-    for (let x=-xWidth/2; x<=xWidth/2; x+=squareSize) { // creating an array with coordinates of every point in dot field
+    
+    for (let x=-width/2; x<=width/2 + 2*squareSize; x+=squareSize) { // creating an array with coordinates of every point in dot field
         dotArray.push([]); // add empty array for each column of dots
-        for (let y=-yWidth/2; y<=yWidth/2; y+=squareSize) { // making array 1.2x larger than screen so screen will always be full
+        for (let y=-height/2; y<=height/2 + 2*squareSize; y+=squareSize) { // 2*squareSize is just to remove small gap at bottom of screen
             dotArray[dotArray.length-1].push([x,y]); // add coordinates of each point to the last item in dotArray
         }
     }
@@ -39,17 +37,23 @@ function draw() {
         xPos = dotArray[x][0][0];
         for (let y=0; y<dotArray[0].length; y++) { // iterating over y-values of points in dotArray
             yPos = dotArray[x][y][1];
-            //transparency = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,minTransparency,maxTransparency) // can map to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
-            saturation = map(noise((xPos+xWidth/2)/300,(yPos+yWidth/2)/300,t+15),0,1,minSaturation,maxSaturation);
-            brightness = map(saturation,minSaturation,maxSaturation,minBrightness,maxBrightness);
+            //transparency = map(noise((xPos+width/2)/300,(yPos+height/2)/300,t+15),0,1,minTransparency,maxTransparency) // can map to brightness levels < 0 and > 100 to increase numbers of very dark and very bright points
+            //saturation = map(noise((yPos+height/2)/300,t+15),0,1,minSaturation,maxSaturation);
+            //brightness = map(saturation,minSaturation,maxSaturation,minBrightness,maxBrightness);
             push();
-            stroke(0,saturation,brightness,0);
-            strokeWeight(squareSize);
+            strokeWeight(5);
+            stroke(200,200,200,3);
+            noFill();
             square(xPos+xMargin,yPos+yMargin,squareSize);
             pop();
         }
     }
     t+=0.01
+    push();
+    noStroke();
+    fill(200,200,200,10);
+    circle(mouseX-width/2,mouseY-height/2,40);
+    pop();
 }
 
 function windowResized(){
