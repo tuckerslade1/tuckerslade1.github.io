@@ -22,9 +22,13 @@
 }
 
 body {
+    height:100%;
     padding: 0px;
-    margin: 0px;
-    background-color: #141414;
+    margin: auto;
+    overflow: hidden;
+    background: #141414;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     font-family: 'proggyvectorregular', Helvetica, sans-serif;
 }
 
